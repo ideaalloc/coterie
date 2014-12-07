@@ -1,0 +1,1 @@
+angular.module("coterie", [ "coterie.controllers", "coterie.services" ]);
