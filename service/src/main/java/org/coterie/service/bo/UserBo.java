@@ -20,43 +20,24 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.coterie.repository.po;
-
-import javax.persistence.*;
-import java.io.Serializable;
+package org.coterie.service.bo;
 
 /**
- * User Persistent Object.
+ * Title.
  * <p/>
- * User has to be involved in a coterie in order to take part in activities.
+ * Description.
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-06
+ * @since 2014-12-07
  */
-@Entity
-@Table(name = "C_USER")
-public class UserPo implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserBo {
     private long id;
-
-    @Column(length = 80, nullable = false)
     private String name;
-
-    @Column(length = 250, nullable = false)
     private String password;
-
-    @Column(length = 64, nullable = false)
     private String email;
-
-    @Column(nullable = false)
     private boolean activated;
-
-    @Column(length = 200)
     private String avatar;
-
-    @Column(length = 500)
     private String description;
 
     public long getId() {
@@ -113,5 +94,18 @@ public class UserPo implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "UserBo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", activated=" + activated +
+                ", avatar='" + avatar + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

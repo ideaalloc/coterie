@@ -26,38 +26,26 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * User Persistent Object.
+ * Coterie User Mapping Persistent Object.
  * <p/>
- * User has to be involved in a coterie in order to take part in activities.
+ * The relationship of coterie and user is Many-To-Many.
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-06
+ * @since 2014-12-07
  */
 @Entity
-@Table(name = "C_USER")
-public class UserPo implements Serializable {
+@Table(name = "C_COTERIE_USER_MAPPING")
+public class CoterieUserMappingPo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 80, nullable = false)
-    private String name;
+    @Column(name = "COTERIE_ID", nullable = false)
+    private long coterieId;
 
-    @Column(length = 250, nullable = false)
-    private String password;
-
-    @Column(length = 64, nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private boolean activated;
-
-    @Column(length = 200)
-    private String avatar;
-
-    @Column(length = 500)
-    private String description;
+    @Column(name = "USER_ID", nullable = false)
+    private long userId;
 
     public long getId() {
         return id;
@@ -67,51 +55,19 @@ public class UserPo implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public long getCoterieId() {
+        return coterieId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCoterieId(long coterieId) {
+        this.coterieId = coterieId;
     }
 
-    public String getPassword() {
-        return password;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public boolean isActivated() {
-        return activated;
-    }
-
-    public void setActivated(boolean activated) {
-        this.activated = activated;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }

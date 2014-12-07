@@ -22,6 +22,17 @@
  */
 package org.coterie.repository.config;
 
+import org.coterie.repository.po.ActivityPo;
+import org.coterie.repository.po.CoteriePo;
+import org.coterie.repository.po.CoterieUserMappingPo;
+import org.coterie.repository.po.UserPo;
+import org.coterie.repository.pojo.ActivityPojo;
+import org.coterie.repository.pojo.CoteriePojo;
+import org.coterie.repository.pojo.CoterieUserMappingPojo;
+import org.coterie.repository.pojo.UserPojo;
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
+import org.dozer.loader.api.BeanMappingBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
@@ -81,5 +92,24 @@ public class RepositoryConfig {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return transactionManager;
+    }
+
+    @Bean
+    public BeanMappingBuilder beanMappingBuilder() {
+        return new BeanMappingBuilder() {
+            protected void configure() {
+                mapping(CoteriePo.class, CoteriePojo.class);
+                mapping(UserPo.class, UserPojo.class);
+                mapping(ActivityPo.class, ActivityPojo.class);
+                mapping(CoterieUserMappingPo.class, CoterieUserMappingPojo.class);
+            }
+        };
+    }
+
+    @Bean
+    public Mapper mapper() {
+        DozerBeanMapper mapper = new DozerBeanMapper();
+        mapper.addMapping(beanMappingBuilder());
+        return mapper;
     }
 }

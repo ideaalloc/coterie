@@ -6,5 +6,6 @@
         <class>org.coterie.repository.po.CoteriePo</class>
         <class>org.coterie.repository.po.ActivityPo</class>
         <class>org.coterie.repository.po.UserPo</class>
+        <class>org.coterie.repository.po.CoterieUserMappingPo</class>
     </persistence-unit>
 </persistence>

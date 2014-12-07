@@ -20,43 +20,21 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.coterie.repository.po;
-
-import javax.persistence.*;
-import java.io.Serializable;
+package org.coterie.repository.pojo;
 
 /**
- * User Persistent Object.
+ * Title.
  * <p/>
- * User has to be involved in a coterie in order to take part in activities.
+ * Description.
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-06
+ * @since 2014-12-07
  */
-@Entity
-@Table(name = "C_USER")
-public class UserPo implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CoteriePojo {
     private long id;
-
-    @Column(length = 80, nullable = false)
     private String name;
-
-    @Column(length = 250, nullable = false)
-    private String password;
-
-    @Column(length = 64, nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private boolean activated;
-
-    @Column(length = 200)
-    private String avatar;
-
-    @Column(length = 500)
+    private String sponsor;
     private String description;
 
     public long getId() {
@@ -75,36 +53,12 @@ public class UserPo implements Serializable {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getSponsor() {
+        return sponsor;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public boolean isActivated() {
-        return activated;
-    }
-
-    public void setActivated(boolean activated) {
-        this.activated = activated;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setSponsor(String sponsor) {
+        this.sponsor = sponsor;
     }
 
     public String getDescription() {

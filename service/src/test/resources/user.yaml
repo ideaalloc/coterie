@@ -1,0 +1,10 @@
+users:
+- {name: 测试1, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
+- {name: 测试2, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
+- {name: 测试3, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
+- {name: 测试4, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
+- {name: 测试5, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
+- {name: 测试6, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
+- {name: 测试7, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
+- {name: 测试8, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
+- {name: 测试9, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
