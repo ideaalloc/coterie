@@ -22,13 +22,21 @@
  */
 package org.coterie.web.config;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
-import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.mvc.WebContentInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.util.Locale;
 
 /**
  * Title.
@@ -43,6 +51,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = {"org.coterie.web.controller"})
 public class WebAppConfig extends WebMvcConfigurerAdapter {
+    private static final String MESSAGE_SOURCE = "classpath:/i18n/messages";
+
     @Bean
     public InternalResourceViewResolver getInternalResourceViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
@@ -61,6 +71,13 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         return interceptor;
     }
 
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+        localeChangeInterceptor.setParamName("locale");
+        return localeChangeInterceptor;
+    }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/libs/**").addResourceLocations("/libs/");
@@ -71,6 +88,25 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(webContentInterceptor());
+        registry.addInterceptor(localeChangeInterceptor());
+    }
+
+    @Bean(name = "messageSource")
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename(MESSAGE_SOURCE);
+        messageSource.setCacheSeconds(5);
+        messageSource.setDefaultEncoding("GBK");
+        return messageSource;
+    }
+
+    @Bean
+    public CookieLocaleResolver localeResolver() {
+        CookieLocaleResolver localeResolver = new CookieLocaleResolver();
+        localeResolver.setDefaultLocale(Locale.CHINESE);
+        localeResolver.setCookieName("coterieLocaleCookie");
+        localeResolver.setCookieMaxAge(3600);
+        return localeResolver;
     }
 
 }
