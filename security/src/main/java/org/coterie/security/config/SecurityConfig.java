@@ -61,10 +61,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*http
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));*/
-
         http.authorizeRequests()
                 .antMatchers("/libs/**").permitAll()
                 .antMatchers("/app/**").permitAll()
