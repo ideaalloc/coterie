@@ -3,3 +3,4 @@ CREATE USER 'coterie'@'%' IDENTIFIED BY 'servicerequest';
 GRANT ALL PRIVILEGES ON coterie.* TO 'coterie'@'%';
 -- UPDATE mysql.user SET Password=PASSWORD('servicerequest') where USER='coterie';
 FLUSH PRIVILEGES;
+

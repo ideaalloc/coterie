@@ -33,12 +33,14 @@ package org.coterie.service.bo;
  */
 public class UserBo {
     private long id;
-    private String name;
+    private String username;
     private String password;
     private String email;
     private boolean activated;
+    private boolean enabled;
     private String avatar;
     private String description;
+    private boolean isAdmin;
 
     public long getId() {
         return id;
@@ -48,12 +50,12 @@ public class UserBo {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -70,6 +72,14 @@ public class UserBo {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public boolean isActivated() {
@@ -96,16 +106,26 @@ public class UserBo {
         this.description = description;
     }
 
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
     @Override
     public String toString() {
         return "UserBo{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", activated=" + activated +
+                ", enabled=" + enabled +
                 ", avatar='" + avatar + '\'' +
                 ", description='" + description + '\'' +
+                ", isAdmin=" + isAdmin +
                 '}';
     }
 }

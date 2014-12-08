@@ -1,10 +1,10 @@
 users:
-- {name: 测试1, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
-- {name: 测试2, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
-- {name: 测试3, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
-- {name: 测试4, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
-- {name: 测试5, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
-- {name: 测试6, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
-- {name: 测试7, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
-- {name: 测试8, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
-- {name: 测试9, password: unknown, email: a@abc.com, activated: true, avatar: obama.png, description: I love the world}
+- {username: user1, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, isAdmin: true}
+- {username: user2, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, isAdmin: true}
+- {username: user3, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, isAdmin: false}
+- {username: user4, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, isAdmin: false}
+- {username: user5, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, isAdmin: false}
+- {username: user6, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, isAdmin: false}
+- {username: user7, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, isAdmin: false}
+- {username: user8, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, isAdmin: false}
+- {username: user9, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, isAdmin: false}

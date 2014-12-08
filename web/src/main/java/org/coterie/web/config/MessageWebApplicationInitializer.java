@@ -61,4 +61,5 @@ public class MessageWebApplicationInitializer extends AbstractAnnotationConfigDi
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
 }

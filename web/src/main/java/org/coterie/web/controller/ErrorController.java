@@ -33,13 +33,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-08
  */
 @Controller
 @RequestMapping("/")
-public class AuthController {
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login() {
-        return "auth/login";
+public class ErrorController {
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String accessDenied() {
+        return "errors/403";
+    }
+
+    @RequestMapping(value = "/404", method = RequestMethod.GET)
+    public String notFound() {
+        return "errors/404";
     }
 }

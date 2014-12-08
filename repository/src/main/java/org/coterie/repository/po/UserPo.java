@@ -42,7 +42,7 @@ public class UserPo implements Serializable {
     private long id;
 
     @Column(length = 80, nullable = false)
-    private String name;
+    private String username;
 
     @Column(length = 250, nullable = false)
     private String password;
@@ -53,11 +53,17 @@ public class UserPo implements Serializable {
     @Column(nullable = false)
     private boolean activated;
 
+    @Column(nullable = false)
+    private boolean enabled;
+
     @Column(length = 200)
     private String avatar;
 
     @Column(length = 500)
     private String description;
+
+    @Column(name = "IS_ADMIN", nullable = false)
+    private boolean isAdmin;
 
     public long getId() {
         return id;
@@ -67,12 +73,12 @@ public class UserPo implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -89,6 +95,14 @@ public class UserPo implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public boolean isActivated() {
@@ -113,5 +127,13 @@ public class UserPo implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }

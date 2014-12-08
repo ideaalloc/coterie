@@ -6,6 +6,7 @@ import org.coterie.repository.dao.UserDao;
 import org.coterie.repository.po.UserPo;
 import org.coterie.repository.pojo.UserPojo;
 import org.coterie.repository.repository.UserRepository;
+import org.coterie.security.config.SecurityConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -26,7 +28,7 @@ import java.util.List;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = {DataSourceConfig.class, RepositoryConfig.class, UserDaoImpl.class})
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = {DataSourceConfig.class, RepositoryConfig.class, SecurityConfig.class, UserDaoImpl.class})
 public class UserDaoImplTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImplTest.class);
 
@@ -36,6 +38,9 @@ public class UserDaoImplTest {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     private List<UserPojo> users;
 
@@ -48,6 +53,8 @@ public class UserDaoImplTest {
     public void testCreate() throws Exception {
         assertNotNull("users not initialized yet.", users);
         for (UserPojo userPojo : users) {
+            // Encoding password
+            userPojo.setPassword(passwordEncoder.encode(userPojo.getPassword()));
             UserPojo returned = userDao.create(userPojo);
             LOGGER.info(returned.toString() + "\n");
         }
@@ -61,6 +68,8 @@ public class UserDaoImplTest {
         for (UserPojo userPojo : users) {
             userPojo.setActivated(false);
             userPojo.setId(pos.get(counter).getId());
+            // Encoding password
+            userPojo.setPassword(passwordEncoder.encode(userPojo.getPassword()));
             LOGGER.info(userDao.update(userPojo).toString() + "\n");
             counter++;
         }

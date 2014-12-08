@@ -30,4 +30,12 @@
         </plugins>
     </build>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.coterie</groupId>
+            <artifactId>datasource</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 </project>
