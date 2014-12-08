@@ -65,7 +65,7 @@ public class UserDaoImpl implements UserDao {
         userPo.setUsername(userPojo.getUsername());
         userPo.setPassword(userPojo.getPassword());
         userPo.setEnabled(userPojo.isEnabled());
-        userPo.setIsAdmin(userPojo.isAdmin());
+        userPo.setAdmin(userPojo.isAdmin());
         userRepository.saveAndFlush(userPo);
         return mapper.map(userPo, UserPojo.class);
     }
