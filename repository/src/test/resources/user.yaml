@@ -1,0 +1,10 @@
+users:
+- {username: user1, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, admin: true}
+- {username: user2, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, admin: true}
+- {username: user3, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, admin: false}
+- {username: user4, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, admin: false}
+- {username: user5, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, admin: false}
+- {username: user6, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, admin: false}
+- {username: user7, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, admin: false}
+- {username: user8, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, admin: false}
+- {username: user9, password: 888888, email: a@abc.com, activated: true, enabled: true, avatar: obama.png, description: I love the world, admin: false}
