@@ -35,16 +35,16 @@ import java.io.Serializable;
  * @since 2014-12-07
  */
 @Entity
-@Table(name = "C_COTERIE_USER_MAPPING")
+@Table(name = "c_coterie_user_mapping")
 public class CoterieUserMappingPo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "COTERIE_ID", nullable = false)
+    @Column(name = "coterie_id", nullable = false)
     private long coterieId;
 
-    @Column(name = "USER_ID", nullable = false)
+    @Column(name = "user_id", nullable = false)
     private long userId;
 
     public long getId() {

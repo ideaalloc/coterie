@@ -40,11 +40,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ErrorController {
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String accessDenied() {
-        return "errors/403";
+        return "error/403";
     }
 
     @RequestMapping(value = "/404", method = RequestMethod.GET)
     public String notFound() {
-        return "errors/404";
+        return "error/404";
     }
 }

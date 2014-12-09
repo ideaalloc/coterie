@@ -33,6 +33,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.mvc.WebContentInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -52,6 +53,7 @@ import java.util.Locale;
 @ComponentScan(basePackages = {"org.coterie.web.controller"})
 public class WebAppConfig extends WebMvcConfigurerAdapter {
     private static final String MESSAGE_SOURCE = "classpath:/i18n/messages";
+    private static final Locale DEFAULT_LOCALE = Locale.CHINESE;
 
     @Bean
     public InternalResourceViewResolver getInternalResourceViewResolver() {
@@ -101,12 +103,19 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public CookieLocaleResolver localeResolver() {
+    public CookieLocaleResolver cookieLocaleResolver() {
         CookieLocaleResolver localeResolver = new CookieLocaleResolver();
-        localeResolver.setDefaultLocale(Locale.CHINESE);
+        localeResolver.setDefaultLocale(DEFAULT_LOCALE);
         localeResolver.setCookieName("coterieLocaleCookie");
         localeResolver.setCookieMaxAge(3600);
         return localeResolver;
+    }
+
+    @Bean
+    public SessionLocaleResolver sessionLocaleResolver() {
+        SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
+        sessionLocaleResolver.setDefaultLocale(DEFAULT_LOCALE);
+        return sessionLocaleResolver;
     }
 
 }

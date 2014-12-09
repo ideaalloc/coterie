@@ -35,7 +35,7 @@ import java.io.Serializable;
  * @since 2014-12-06
  */
 @Entity
-@Table(name = "C_COTERIE")
+@Table(name = "c_coterie")
 public class CoteriePo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

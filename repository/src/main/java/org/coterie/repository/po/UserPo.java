@@ -24,6 +24,7 @@ package org.coterie.repository.po;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * User Persistent Object.
@@ -35,7 +36,7 @@ import java.io.Serializable;
  * @since 2014-12-06
  */
 @Entity
-@Table(name = "C_USER")
+@Table(name = "c_user")
 public class UserPo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,8 +48,23 @@ public class UserPo implements Serializable {
     @Column(length = 250, nullable = false)
     private String password;
 
-    @Column(length = 64, nullable = false)
+    @Column(length = 64)
     private String email;
+
+    @Column(length = 32)
+    private String phone;
+
+    @Column
+    private Date birthday;
+
+    @Column(name = "first_name", length = 32, nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", length = 32, nullable = false)
+    private String lastName;
+
+    @Column(length = 8)
+    private String gender;
 
     @Column(nullable = false)
     private boolean activated;
@@ -62,7 +78,7 @@ public class UserPo implements Serializable {
     @Column(length = 500)
     private String description;
 
-    @Column(name = "IS_ADMIN", nullable = false)
+    @Column(name = "is_admin", nullable = false)
     private boolean isAdmin;
 
     public long getId() {
@@ -95,6 +111,46 @@ public class UserPo implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public boolean isEnabled() {

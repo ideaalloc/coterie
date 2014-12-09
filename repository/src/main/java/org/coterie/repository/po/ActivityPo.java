@@ -35,7 +35,7 @@ import java.io.Serializable;
  * @since 2014-12-06
  */
 @Entity
-@Table(name = "C_ACTIVITY")
+@Table(name = "c_activity")
 public class ActivityPo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +44,7 @@ public class ActivityPo implements Serializable {
     @Column(length = 80, nullable = false)
     private String name;
 
-    @Column(name = "COTERIE_ID", nullable = false)
+    @Column(name = "coterie_id", nullable = false)
     private long coterieId;
 
     @Column(length = 500)

@@ -22,47 +22,24 @@
  */
 package org.coterie.web.controller;
 
-import org.coterie.service.bo.UserBo;
-import org.coterie.service.service.UserService;
-import org.coterie.web.aspects.NotifyClients;
-import org.coterie.web.vo.UserVo;
-import org.dozer.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Title.
+ * Main Controller.
  * <p/>
  * Description.
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-09
  */
 @Controller
 @RequestMapping("/")
-public class UserController {
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private Mapper mapper;
-
-    @NotifyClients
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
-    @ResponseBody
-    public UserVo add(@RequestBody UserVo userVo) {
-        UserBo bo = mapper.map(userVo, UserBo.class);
-        UserBo outBo = userService.addUser(bo);
-        return mapper.map(outBo, UserVo.class);
-    }
-
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String register() {
-        return "user/register";
+public class MainController {
+    @RequestMapping(method = RequestMethod.GET)
+    public String index() {
+        return "index";
     }
 }
