@@ -19,6 +19,19 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
     <div class="ui error warning form segment">
+        <div class="field">
+            <spring:message code="label.login.username" var="username"/>
+            <label>${username}</label>
+            <input name="username" placeholder="${username}" type="text">
+        </div>
+        <div class="field">
+            <spring:message code="label.login.password" var="password"/>
+            <label>${password}</label>
+            <input name="password" type="password">
+        </div>
+        <spring:message code="label.login" var="login"/>
+        <button type="submit" class="ui submit button">${login}</button>
+
         <c:if test="${param.error != null}">
             <div class="ui error message">
                 <spring:message code="label.error.operation" var="errorOperation"/>
@@ -35,19 +48,6 @@
                 <p><spring:message code="label.warning.logout"/></p>
             </div>
         </c:if>
-
-        <div class="field">
-            <spring:message code="label.login.username" var="username"/>
-            <label>${username}</label>
-            <input name="username" placeholder="${username}" type="text">
-        </div>
-        <div class="field">
-            <spring:message code="label.login.password" var="password"/>
-            <label>${password}</label>
-            <input name="password" type="password">
-        </div>
-        <spring:message code="label.login" var="login"/>
-        <button type="submit" class="ui submit button">${login}</button>
     </div>
 </form>
 
