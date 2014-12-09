@@ -1,4 +1,4 @@
 Coterie
 =======
 
-Gathering groups of people into different coteries, each of which has the same interest....
+The project aims to gather groups of people into different coteries, each of which has the same interests. Social requirements are based on the communication efficiency. I introduce such a coterie to make the group professional. First, people with almost the same interests are apt to gather and talk, thus, here comes the coterie. Second, assuming people have already involved in coteries, which would produce the new concept, **activities**. So, coteries produce activities, and when more activities are produced. More people would be attracted by the activities. However, I would make a limit to the process to take part in activities. Anyone who would like to take part in the activities needs to join the corresponding coteries first. So now, activities produce coteries. That's the basis. I would conclude more while development and I would like to listen to any suggestions from my **coteries**. Thank you.
