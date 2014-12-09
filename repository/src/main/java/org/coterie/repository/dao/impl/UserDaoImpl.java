@@ -28,6 +28,7 @@ import org.coterie.repository.pojo.UserPojo;
 import org.coterie.repository.repository.UserRepository;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -48,11 +49,17 @@ public class UserDaoImpl implements UserDao {
     @Autowired
     private Mapper mapper;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @Override
     public UserPojo create(UserPojo userPojo) {
         UserPo userPo = mapper.map(userPojo, UserPo.class);
+        userPo.setPassword(passwordEncoder.encode(userPo.getPassword()));
         userRepository.saveAndFlush(userPo);
-        return mapper.map(userPo, UserPojo.class);
+        UserPojo returnedUserPojo = mapper.map(userPo, UserPojo.class);
+        returnedUserPojo.setPassword("");
+        return returnedUserPojo;
     }
 
     @Override
@@ -62,11 +69,18 @@ public class UserDaoImpl implements UserDao {
         userPo.setAvatar(userPojo.getAvatar());
         userPo.setDescription(userPojo.getDescription());
         userPo.setEmail(userPojo.getEmail());
+        userPo.setPhone(userPojo.getPhone());
         userPo.setUsername(userPojo.getUsername());
-        userPo.setPassword(userPojo.getPassword());
+        userPo.setPassword(passwordEncoder.encode(userPojo.getPassword()));
         userPo.setEnabled(userPojo.isEnabled());
         userPo.setAdmin(userPojo.isAdmin());
+        userPo.setBirthday(userPojo.getBirthday());
+        userPo.setFirstName(userPojo.getFirstName());
+        userPo.setLastName(userPojo.getLastName());
+        userPo.setGender(userPojo.getGender());
         userRepository.saveAndFlush(userPo);
-        return mapper.map(userPo, UserPojo.class);
+        UserPojo returnedUserPojo = mapper.map(userPo, UserPojo.class);
+        returnedUserPojo.setPassword("");
+        return returnedUserPojo;
     }
 }

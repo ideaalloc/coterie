@@ -22,6 +22,8 @@
  */
 package org.coterie.web.vo;
 
+import java.util.Date;
+
 /**
  * Title.
  * <p/>
@@ -36,6 +38,11 @@ public class UserVo {
     private String username;
     private String password;
     private String email;
+    private String phone;
+    private Date birthday;
+    private String firstName;
+    private String lastName;
+    private String gender;
     private boolean activated;
     private boolean enabled;
     private String avatar;
@@ -74,12 +81,44 @@ public class UserVo {
         this.email = email;
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public boolean isActivated() {
@@ -88,6 +127,14 @@ public class UserVo {
 
     public void setActivated(boolean activated) {
         this.activated = activated;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getAvatar() {

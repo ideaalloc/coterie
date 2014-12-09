@@ -24,15 +24,14 @@ package org.coterie.web.controller;
 
 import org.coterie.service.bo.UserBo;
 import org.coterie.service.service.UserService;
-import org.coterie.web.aspects.NotifyClients;
 import org.coterie.web.vo.UserVo;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Title.
@@ -52,13 +51,16 @@ public class UserController {
     @Autowired
     private Mapper mapper;
 
-    @NotifyClients
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
-    @ResponseBody
-    public UserVo add(@RequestBody UserVo userVo) {
-        UserBo bo = mapper.map(userVo, UserBo.class);
-        UserBo outBo = userService.addUser(bo);
-        return mapper.map(outBo, UserVo.class);
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String registerAdd(@ModelAttribute UserVo userVo, Model model) {
+        UserBo userBo = mapper.map(userVo, UserBo.class);
+        userBo.setActivated(false);
+        userBo.setAdmin(false);
+        userBo.setEnabled(true);
+        userBo = userService.addUser(userBo);
+        UserVo returnedUserVo = mapper.map(userBo, UserVo.class);
+        model.addAttribute("user", returnedUserVo);
+        return "auth/login";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)

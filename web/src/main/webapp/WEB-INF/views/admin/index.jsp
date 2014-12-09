@@ -17,7 +17,7 @@
 <div class="ignored ui info message">Under Construction....</div>
 <form action="/logout" method="post">
   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-  <button type="submit" class="ui fluid button"><spring:message code="label.logout" /></button>
+  <button type="submit" class="ui submit button"><spring:message code="label.logout" /></button>
 </form>
 </body>
 </html>
