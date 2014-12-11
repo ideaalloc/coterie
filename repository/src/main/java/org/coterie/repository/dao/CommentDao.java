@@ -22,7 +22,9 @@
  */
 package org.coterie.repository.dao;
 
-import org.coterie.repository.pojo.UserPojo;
+import org.coterie.repository.pojo.CommentPojo;
+
+import java.util.List;
 
 /**
  * Title.
@@ -31,12 +33,10 @@ import org.coterie.repository.pojo.UserPojo;
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-11
  */
-public interface UserDao {
-    UserPojo create(UserPojo userPojo);
+public interface CommentDao {
+    List<CommentPojo> getComments(long topicId);
 
-    UserPojo update(UserPojo userPojo);
-
-    UserPojo getUserByName(String username);
+    CommentPojo addComment(CommentPojo commentPojo);
 }

@@ -42,7 +42,7 @@ public class UserPo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 80, nullable = false)
+    @Column(length = 80, nullable = false, unique = true)
     private String username;
 
     @Column(length = 250, nullable = false)

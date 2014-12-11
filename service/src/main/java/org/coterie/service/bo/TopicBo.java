@@ -20,23 +20,52 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.coterie.repository.dao;
-
-import org.coterie.repository.pojo.UserPojo;
+package org.coterie.service.bo;
 
 /**
- * Title.
+ * Topic Business Object.
  * <p/>
  * Description.
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-11
  */
-public interface UserDao {
-    UserPojo create(UserPojo userPojo);
+public class TopicBo {
+    private long id;
+    private long coterieId;
+    private String title;
+    private String description;
 
-    UserPojo update(UserPojo userPojo);
+    public long getId() {
+        return id;
+    }
 
-    UserPojo getUserByName(String username);
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getCoterieId() {
+        return coterieId;
+    }
+
+    public void setCoterieId(long coterieId) {
+        this.coterieId = coterieId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

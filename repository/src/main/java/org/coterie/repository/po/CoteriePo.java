@@ -41,13 +41,13 @@ public class CoteriePo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 80, nullable = false)
+    @Column(length = 200, nullable = false)
     private String name;
 
     @Column(nullable = false)
     private long sponsor;
 
-    @Column(length = 500)
+    @Column(length = 2000)
     private String description;
 
     public long getId() {

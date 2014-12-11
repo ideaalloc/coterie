@@ -20,9 +20,14 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.coterie.repository.dao;
+package org.coterie.repository.dao.impl;
 
-import org.coterie.repository.pojo.UserPojo;
+import org.coterie.repository.dao.TopicDao;
+import org.coterie.repository.pojo.TopicPojo;
+import org.coterie.repository.repository.TopicRepository;
+import org.dozer.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * Title.
@@ -31,12 +36,18 @@ import org.coterie.repository.pojo.UserPojo;
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-11
  */
-public interface UserDao {
-    UserPojo create(UserPojo userPojo);
+@Repository
+public class TopicDaoImpl implements TopicDao {
+    @Autowired
+    private TopicRepository topicRepository;
 
-    UserPojo update(UserPojo userPojo);
+    @Autowired
+    private Mapper mapper;
 
-    UserPojo getUserByName(String username);
+    @Override
+    public TopicPojo getTopic(long topicId) {
+        return mapper.map(topicRepository.findOne(topicId), TopicPojo.class);
+    }
 }

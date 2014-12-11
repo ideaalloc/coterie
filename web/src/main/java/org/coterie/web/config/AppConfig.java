@@ -22,9 +22,15 @@
  */
 package org.coterie.web.config;
 
+import org.coterie.service.bo.CommentBo;
+import org.coterie.service.bo.TopicBo;
 import org.coterie.service.bo.UserBo;
+import org.coterie.service.bo.VoteBo;
 import org.coterie.web.aspects.NotifyAspect;
+import org.coterie.web.vo.CommentVo;
+import org.coterie.web.vo.TopicVo;
 import org.coterie.web.vo.UserVo;
+import org.coterie.web.vo.VoteVo;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.dozer.loader.api.BeanMappingBuilder;
@@ -41,7 +47,9 @@ import org.springframework.stereotype.Controller;
  * @since 2014-12-07
  */
 @Configuration
-@ComponentScan(basePackages = {"org.coterie.web"}, excludeFilters = {@ComponentScan.Filter(value = Controller.class, type = FilterType.ANNOTATION)})
+@ComponentScan(basePackages = {"org.coterie.web"}, excludeFilters = {
+        @ComponentScan.Filter(value = Controller.class, type = FilterType.ANNOTATION)
+})
 @EnableAspectJAutoProxy
 public class AppConfig {
     @Bean
@@ -49,6 +57,9 @@ public class AppConfig {
         return new BeanMappingBuilder() {
             protected void configure() {
                 mapping(UserBo.class, UserVo.class);
+                mapping(VoteBo.class, VoteVo.class);
+                mapping(TopicBo.class, TopicVo.class);
+                mapping(CommentBo.class, CommentVo.class);
             }
         };
     }

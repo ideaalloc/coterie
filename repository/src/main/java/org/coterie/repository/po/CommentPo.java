@@ -20,23 +20,65 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.coterie.repository.dao;
+package org.coterie.repository.po;
 
-import org.coterie.repository.pojo.UserPojo;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
- * Title.
+ * Comment Persistence Object.
  * <p/>
- * Description.
+ * Comments on the topic.
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-10
  */
-public interface UserDao {
-    UserPojo create(UserPojo userPojo);
+@Entity
+@Table(name = "c_comment")
+public class CommentPo implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-    UserPojo update(UserPojo userPojo);
+    @Column(name = "topic_id", nullable = false)
+    private long topicId;
 
-    UserPojo getUserByName(String username);
+    @Column(name = "user_id", nullable = false)
+    private long userId;
+
+    @Column(length = 256, nullable = false)
+    private String content;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public long getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(long topicId) {
+        this.topicId = topicId;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 }

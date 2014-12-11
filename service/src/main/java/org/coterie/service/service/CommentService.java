@@ -20,23 +20,23 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.coterie.repository.dao;
+package org.coterie.service.service;
 
-import org.coterie.repository.pojo.UserPojo;
+import org.coterie.service.bo.CommentBo;
+
+import java.util.List;
 
 /**
- * Title.
+ * Comment Service.
  * <p/>
  * Description.
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-11
  */
-public interface UserDao {
-    UserPojo create(UserPojo userPojo);
+public interface CommentService {
+    List<CommentBo> getComments(long topicId);
 
-    UserPojo update(UserPojo userPojo);
-
-    UserPojo getUserByName(String username);
+    CommentBo addComment(CommentBo commentBo);
 }

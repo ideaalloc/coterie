@@ -20,9 +20,10 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.coterie.repository.dao;
+package org.coterie.repository.repository;
 
-import org.coterie.repository.pojo.UserPojo;
+import org.coterie.repository.po.TopicPo;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Title.
@@ -33,10 +34,5 @@ import org.coterie.repository.pojo.UserPojo;
  * @version 1.0
  * @since 2014-12-07
  */
-public interface UserDao {
-    UserPojo create(UserPojo userPojo);
-
-    UserPojo update(UserPojo userPojo);
-
-    UserPojo getUserByName(String username);
+public interface TopicRepository extends JpaRepository<TopicPo, Long> {
 }

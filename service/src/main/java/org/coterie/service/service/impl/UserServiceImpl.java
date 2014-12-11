@@ -55,4 +55,9 @@ public class UserServiceImpl implements UserService {
         UserPojo returned = userDao.create(userPojo);
         return mapper.map(returned, UserBo.class);
     }
+
+    @Override
+    public UserBo getUserByName(String username) {
+        return mapper.map(userDao.getUserByName(username), UserBo.class);
+    }
 }

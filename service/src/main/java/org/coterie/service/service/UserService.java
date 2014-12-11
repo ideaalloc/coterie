@@ -35,4 +35,6 @@ import org.coterie.service.bo.UserBo;
  */
 public interface UserService {
     UserBo addUser(UserBo userBo);
+
+    UserBo getUserByName(String username);
 }

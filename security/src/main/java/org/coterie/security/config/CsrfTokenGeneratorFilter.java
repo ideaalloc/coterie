@@ -20,10 +20,16 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.coterie.repository.repository;
+package org.coterie.security.config;
 
-import org.coterie.repository.po.ActivityPo;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * Title.
@@ -32,7 +38,24 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-11
  */
-public interface ActivityRepository extends JpaRepository<ActivityPo, Long> {
+public class CsrfTokenGeneratorFilter extends OncePerRequestFilter {
+    @Override
+    protected void doFilterInternal(
+            HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+        CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+
+        // Spring Security will allow the Token to be included in this header name
+        response.setHeader("X-CSRF-HEADER", token.getHeaderName());
+
+        // Spring Security will allow the token to be included in this parameter name
+        response.setHeader("X-CSRF-PARAM", token.getParameterName());
+
+        // this is the value of the token to be included as either a header or an HTTP parameter
+        response.setHeader("X-CSRF-TOKEN", token.getToken());
+
+        filterChain.doFilter(request, response);
+    }
 }

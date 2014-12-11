@@ -22,7 +22,7 @@
  */
 package org.coterie.repository.dao;
 
-import org.coterie.repository.pojo.UserPojo;
+import org.coterie.repository.pojo.TopicPojo;
 
 /**
  * Title.
@@ -31,12 +31,8 @@ import org.coterie.repository.pojo.UserPojo;
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-11
  */
-public interface UserDao {
-    UserPojo create(UserPojo userPojo);
-
-    UserPojo update(UserPojo userPojo);
-
-    UserPojo getUserByName(String username);
+public interface TopicDao {
+    TopicPojo getTopic(long topicId);
 }

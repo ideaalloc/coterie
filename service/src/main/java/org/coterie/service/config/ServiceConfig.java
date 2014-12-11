@@ -22,8 +22,14 @@
  */
 package org.coterie.service.config;
 
+import org.coterie.repository.pojo.CommentPojo;
+import org.coterie.repository.pojo.TopicPojo;
 import org.coterie.repository.pojo.UserPojo;
+import org.coterie.repository.pojo.VotePojo;
+import org.coterie.service.bo.CommentBo;
+import org.coterie.service.bo.TopicBo;
 import org.coterie.service.bo.UserBo;
+import org.coterie.service.bo.VoteBo;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.dozer.loader.api.BeanMappingBuilder;
@@ -50,6 +56,9 @@ public class ServiceConfig {
         return new BeanMappingBuilder() {
             protected void configure() {
                 mapping(UserPojo.class, UserBo.class);
+                mapping(TopicPojo.class, TopicBo.class);
+                mapping(CommentPojo.class, CommentBo.class);
+                mapping(VotePojo.class, VoteBo.class);
             }
         };
     }

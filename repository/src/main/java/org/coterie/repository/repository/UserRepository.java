@@ -24,6 +24,10 @@ package org.coterie.repository.repository;
 
 import org.coterie.repository.po.UserPo;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 /**
  * Title.
@@ -35,4 +39,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @since 2014-12-06
  */
 public interface UserRepository extends JpaRepository<UserPo, Long> {
+    @Query("select u from UserPo u where u.username = :username")
+    List<UserPo> findByUsername(@Param("username") String username);
 }

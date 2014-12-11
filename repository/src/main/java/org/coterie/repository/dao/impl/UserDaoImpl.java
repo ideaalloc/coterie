@@ -27,9 +27,13 @@ import org.coterie.repository.po.UserPo;
 import org.coterie.repository.pojo.UserPojo;
 import org.coterie.repository.repository.UserRepository;
 import org.dozer.Mapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Title.
@@ -42,6 +46,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class UserDaoImpl implements UserDao {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImpl.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -83,4 +88,18 @@ public class UserDaoImpl implements UserDao {
         returnedUserPojo.setPassword("");
         return returnedUserPojo;
     }
+
+    @Override
+    public UserPojo getUserByName(String username) {
+        List<UserPo> userPos = userRepository.findByUsername(username);
+        if (userPos.size() == 0) {
+            String errorMessage = String.format("There is no user name %s in db", username);
+            LOGGER.error(errorMessage);
+            throw new RuntimeException(errorMessage);
+        }
+        UserPojo userPojo = mapper.map(userPos.get(0), UserPojo.class);
+        userPojo.setPassword("");
+        return userPojo;
+    }
+
 }

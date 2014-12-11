@@ -20,7 +20,14 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.coterie.repository.pojo;
+package org.coterie.repository.repository;
+
+import org.coterie.repository.po.CommentPo;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 /**
  * Title.
@@ -29,43 +36,9 @@ package org.coterie.repository.pojo;
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-11
  */
-public class ActivityPojo {
-    private long id;
-    private String name;
-    private long coterieId;
-    private String description;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getCoterieId() {
-        return coterieId;
-    }
-
-    public void setCoterieId(long coterieId) {
-        this.coterieId = coterieId;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+public interface CommentRepository extends JpaRepository<CommentPo, Long> {
+    @Query("select c from CommentPo c where c.topicId = :topicId")
+    List<CommentPo> findByTopicId(@Param("topicId") long topicId);
 }

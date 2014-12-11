@@ -26,29 +26,26 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Activity Persistent Object.
+ * Vote Persistence Object.
  * <p/>
- * Activity is created by the head of a coterie, and visible only to the people in the same coterie.
+ * People in coteries could vote one topic for once.
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-06
+ * @since 2014-12-10
  */
 @Entity
-@Table(name = "c_activity")
-public class ActivityPo implements Serializable {
+@Table(name = "c_vote")
+public class VotePo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 80, nullable = false)
-    private String name;
+    @Column(name = "user_id", nullable = false)
+    private long userId;
 
-    @Column(name = "coterie_id", nullable = false)
-    private long coterieId;
-
-    @Column(length = 500)
-    private String description;
+    @Column(name = "topic_id", nullable = false)
+    private long topicId;
 
     public long getId() {
         return id;
@@ -58,27 +55,19 @@ public class ActivityPo implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
-    public long getCoterieId() {
-        return coterieId;
+    public long getTopicId() {
+        return topicId;
     }
 
-    public void setCoterieId(long coterieId) {
-        this.coterieId = coterieId;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTopicId(long topicId) {
+        this.topicId = topicId;
     }
 }

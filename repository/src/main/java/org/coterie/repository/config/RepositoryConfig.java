@@ -22,14 +22,8 @@
  */
 package org.coterie.repository.config;
 
-import org.coterie.repository.po.ActivityPo;
-import org.coterie.repository.po.CoteriePo;
-import org.coterie.repository.po.CoterieUserMappingPo;
-import org.coterie.repository.po.UserPo;
-import org.coterie.repository.pojo.ActivityPojo;
-import org.coterie.repository.pojo.CoteriePojo;
-import org.coterie.repository.pojo.CoterieUserMappingPojo;
-import org.coterie.repository.pojo.UserPojo;
+import org.coterie.repository.po.*;
+import org.coterie.repository.pojo.*;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.dozer.loader.api.BeanMappingBuilder;
@@ -100,8 +94,10 @@ public class RepositoryConfig {
             protected void configure() {
                 mapping(CoteriePo.class, CoteriePojo.class);
                 mapping(UserPo.class, UserPojo.class);
-                mapping(ActivityPo.class, ActivityPojo.class);
+                mapping(TopicPo.class, TopicPojo.class);
                 mapping(CoterieUserMappingPo.class, CoterieUserMappingPojo.class);
+                mapping(CommentPo.class, CommentPojo.class);
+                mapping(VotePo.class, VotePojo.class);
             }
         };
     }

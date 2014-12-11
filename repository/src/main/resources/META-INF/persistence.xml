@@ -4,8 +4,10 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="coterie" transaction-type="RESOURCE_LOCAL">
         <class>org.coterie.repository.po.CoteriePo</class>
-        <class>org.coterie.repository.po.ActivityPo</class>
+        <class>org.coterie.repository.po.TopicPo</class>
         <class>org.coterie.repository.po.UserPo</class>
         <class>org.coterie.repository.po.CoterieUserMappingPo</class>
+        <class>org.coterie.repository.pojo.CommentPojo</class>
+        <class>org.coterie.repository.pojo.VotePojo</class>
     </persistence-unit>
 </persistence>

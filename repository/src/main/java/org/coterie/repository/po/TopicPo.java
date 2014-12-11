@@ -20,23 +20,65 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.coterie.repository.dao;
+package org.coterie.repository.po;
 
-import org.coterie.repository.pojo.UserPojo;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
- * Title.
+ * Topic Persistent Object.
  * <p/>
- * Description.
+ * Activity is created by the head of a coterie, and visible only to the people in the same coterie.
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-06
  */
-public interface UserDao {
-    UserPojo create(UserPojo userPojo);
+@Entity
+@Table(name = "c_topic")
+public class TopicPo implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-    UserPojo update(UserPojo userPojo);
+    @Column(name = "coterie_id", nullable = false)
+    private long coterieId;
 
-    UserPojo getUserByName(String username);
+    @Column(length = 200, nullable = false)
+    private String title;
+
+    @Column(length = 2000)
+    private String description;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public long getCoterieId() {
+        return coterieId;
+    }
+
+    public void setCoterieId(long coterieId) {
+        this.coterieId = coterieId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

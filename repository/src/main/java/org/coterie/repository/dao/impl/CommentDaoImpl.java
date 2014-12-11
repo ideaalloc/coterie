@@ -20,9 +20,18 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.coterie.repository.dao;
+package org.coterie.repository.dao.impl;
 
-import org.coterie.repository.pojo.UserPojo;
+import org.coterie.repository.dao.CommentDao;
+import org.coterie.repository.po.CommentPo;
+import org.coterie.repository.pojo.CommentPojo;
+import org.coterie.repository.repository.CommentRepository;
+import org.dozer.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Title.
@@ -31,12 +40,29 @@ import org.coterie.repository.pojo.UserPojo;
  *
  * @author Bill Lv {@literal <billcc.lv@hotmail.com>}
  * @version 1.0
- * @since 2014-12-07
+ * @since 2014-12-11
  */
-public interface UserDao {
-    UserPojo create(UserPojo userPojo);
+@Repository
+public class CommentDaoImpl implements CommentDao {
+    @Autowired
+    private CommentRepository commentRepository;
 
-    UserPojo update(UserPojo userPojo);
+    @Autowired
+    private Mapper mapper;
 
-    UserPojo getUserByName(String username);
+    @Override
+    public List<CommentPojo> getComments(long topicId) {
+        List<CommentPo> commentPos = commentRepository.findByTopicId(topicId);
+        List<CommentPojo> commentPojos = new ArrayList<>(commentPos.size());
+        for (CommentPo commentPo : commentPos) {
+            commentPojos.add(mapper.map(commentPo, CommentPojo.class));
+        }
+        return commentPojos;
+    }
+
+    @Override
+    public CommentPojo addComment(CommentPojo commentPojo) {
+        CommentPo commentPo = commentRepository.saveAndFlush(mapper.map(commentPojo, CommentPo.class));
+        return mapper.map(commentPo, CommentPojo.class);
+    }
 }
